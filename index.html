@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wise Tech | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+body{background:#ffffff;color:#111;}header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:100;} header h1{color:#0077ff;font-size:1.5rem;} nav{display:flex;} nav a{color:#555;margin-left:25px;text-decoration:none;position:relative;font-size:0.95rem;} nav a::after{content:"";position:absolute;width:0;height:2px;background:#0077ff;left:0;bottom:-5px;transition:0.3s;} nav a:hover::after{width:100%;} nav a:hover{color:#000;}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;} .hero h2{font-size:3rem;color:#0077ff;margin-bottom:15px;} .hero p{color:#555;max-width:600px;margin-bottom:25px;line-height:1.6;} .hero button{padding:14px 30px;border:none;background:#0077ff;color:#fff;font-weight:600;border-radius:30px;cursor:pointer;}
+
+.section{padding:80px 8%;} .section h2{text-align:center;margin-bottom:50px;font-size:2.2rem;color:#0077ff;}
+
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;} .card{background:#fff;border:1px solid #eee;padding:20px;border-radius:15px;transition:0.3s;box-shadow:0 5px 15px rgba(0,0,0,0.05);} .card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,0.1);} .card img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:15px;border:1px solid #ddd;} .card h3{margin-bottom:10px;font-size:1.2rem;} .card p{color:#555;font-size:0.95rem;line-height:1.5;} .card a{display:inline-block;margin-top:15px;color:#0077ff;text-decoration:none;font-weight:600;}
+
+/* SKILLS WITH IMAGES */ .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;} .skill-card{background:#fff;border:1px solid #eee;border-radius:15px;padding:20px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,0.05);transition:0.3s;} .skill-card:hover{transform:translateY(-8px);} .skill-card img{width:60px;margin-bottom:15px;} .skill-card h4{margin-bottom:8px;color:#0077ff;} .skill-card p{font-size:0.85rem;color:#555;line-height:1.4;}
+
+/* DARK CONTACT SECTION */ .contact-section{background:#0b0f19;color:#fff;padding:80px 8%;} .contact-section h2{text-align:center;margin-bottom:20px;font-size:2rem;} .contact-section p{text-align:center;color:#bbb;margin-bottom:30px;} .contact-form{max-width:500px;margin:auto;display:flex;flex-direction:column;gap:15px;} .contact-form input,.contact-form textarea{padding:12px;border:none;border-radius:8px;outline:none;} .contact-form button{padding:14px;border:none;background:#00d4ff;color:#000;font-weight:600;border-radius:25px;cursor:pointer;} .contact-links{text-align:center;margin-top:20px;} .contact-links a{color:#00d4ff;text-decoration:none;display:block;margin-top:8px;}
+
+footer{text-align:center;padding:25px;color:#777;font-size:0.9rem;}
+
+@media(max-width:768px){ .section{padding:60px 5%;} .hero h2{font-size:2.2rem;} }
+
+</style>
+</head>
+<body><header>
+<h1>Wise Tech</h1>
+<nav>
+<a href="#">Home</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
+</header><section class="hero">
+<h2>Creative Web Developer</h2>
+<p>I design and build modern, high-converting websites that help brands grow and stand out online.</p>
+<button onclick="document.getElementById('projects').scrollIntoView()">View My Work</button>
+</section><section class="section" id="projects">
+<h2>Featured Projects</h2>
+<div class="projects"><div class="card">
+<img src="./asset/image/Wise Tech.png">
+<h3>Mummy Ola Real Estate</h3>
+<p>Modern real estate platform with clean UI and responsive layout.</p>
+<a href="https://mummy-ola-real-estate-7iia.vercel.app" target="_blank">Visit Website →</a>
+</div><div class="card">
+<img src="./asset/image/Wise Tech2.png">
+<h3>Celeste Platform</h3>
+<p>Engagement platform designed for growth and user interaction.</p>
+<a href="https://celeste-23-ten.vercel.app" target="_blank">Visit Website →</a>
+</div></div>
+</section><section class="section" id="skills">
+<h2>My Skills</h2>
+<div class="skills-grid"><div class="skill-card">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+<h4>HTML</h4>
+<p>Building structured, semantic and SEO-friendly web pages.</p>
+</div><div class="skill-card">
+<img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+<h4>CSS</h4>
+<p>Designing modern, responsive and visually appealing layouts.</p>
+</div><div class="skill-card">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+<h4>JavaScript</h4>
+<p>Adding interactivity and dynamic functionality to websites.</p>
+</div><div class="skill-card">
+<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
+<h4>Responsive Design</h4>
+<p>Ensuring websites look perfect on all devices and screen sizes.</p>
+</div></div>
+</section><section class="contact-section" id="contact">
+<h2>Contact Me</h2>
+<p>Have a project in mind or want a professional website? Send me a message.</p><form class="contact-form" action="mailto:your@email.com" method="post" enctype="text/plain">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="5" placeholder="Your Message" required></textarea>
+<button type="submit">Send Message</button>
+</form><div class="contact-links">
+<a href="https://instagram.com/wise_tech" target="_blank">Message on Instagram</a>
+<a href="mailto:Wisetech415@gmail.com">Send Email Directly</a>
+</div></section><footer>
+<p>© 2026 Wise Tech. All rights reserved.</p>
+</footer></body>
+</html>
