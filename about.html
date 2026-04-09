@@ -3,155 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wise Tech | About Me</title>
+<title>Wise Tech | About</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
+
 /* RESET */
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth;}
-body {background:#fdfdfd; color:#111; line-height:1.6;}
-a {text-decoration:none; color:inherit;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#fdfdfd;color:#111;}
 
 /* HEADER */
-header {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:15px 8%; background:#fff; border-bottom:1px solid #eaeaea;
-  position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.03);
-  transition:0.3s;
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 8%;background:#fff;position:sticky;top:0;z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
-header.scrolled {box-shadow:0 4px 20px rgba(0,0,0,0.08);}
-.logo-area {display:flex; align-items:center; gap:12px;}
-.logo-area img {width:50px; height:50px; border-radius:10px;}
-.logo-text {font-size:1.6rem; font-weight:700; letter-spacing:0.5px;}
-.logo-text span:first-child{color:#0077ff;} 
-.logo-text span:last-child{color:#111;}
-.menu-toggle {font-size:1.8rem; cursor:pointer; display:none;}
-nav {display:flex; gap:25px;}
-nav a {position:relative; padding:5px 0; font-size:0.95rem; font-weight:500; color:#555;}
-nav a.active::after {content:""; position:absolute; bottom:-5px; left:0; width:100%; height:2px; background:#0077ff;}
-nav a.contact-btn {
-  padding: 8px 18px; background:#00d4ff; color:#000; border-radius:25px; font-weight:600; transition:0.3s;
-}
-nav a.contact-btn:hover {background:#0077ff; color:#fff !important;}
+.logo-area{display:flex;align-items:center;gap:10px;}
+.logo-area img{width:45px;border-radius:10px;}
+.logo-text{font-weight:700;font-size:1.5rem;}
+.logo-text span:first-child{color:#0077ff;}
+
+nav{display:flex;gap:20px;}
+nav a{color:#555;text-decoration:none;font-weight:500;}
+nav a.active{color:#0077ff;}
+.contact-btn{background:#00d4ff;padding:8px 18px;border-radius:25px;color:#000;}
+
+.menu-toggle{display:none;font-size:1.8rem;cursor:pointer;}
 @media(max-width:768px){
-  .menu-toggle{display:block;}
-  nav{position:absolute; top:60px; right:0; background:#fff; width:220px; flex-direction:column; align-items:center; display:none; border:1px solid #eee; padding:10px; border-radius:10px;}
-  nav.active{display:flex;}
-  nav a{padding:12px 0; width:100%; text-align:center; border-top:1px solid #eee;}
-  nav a.contact-btn {width:80%; margin:8px 0;}
+.menu-toggle{display:block;}
+nav{display:none;flex-direction:column;position:absolute;top:60px;right:0;background:#fff;width:200px;padding:10px;}
+nav.active{display:flex;}
 }
 
-/* HERO SECTION */
-.hero-about {
-  position:relative; height:55vh; display:flex; align-items:center; justify-content:center;
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./asset/image/about-bg.jpg') center/cover no-repeat;
-  text-align:center; color:#fff;
-  animation:fadeInUp 1s ease-in-out;
+/* HERO */
+.hero-about{
+height:50vh;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url('./asset/image/about-bg.jpg') center/cover;
+color:#fff;text-align:center;
 }
-.hero-about h1 {font-size:3.2rem; font-weight:700; text-shadow:0 4px 15px rgba(0,0,0,0.4);}
+.hero-about h1{font-size:3rem;}
 
-/* ABOUT SECTION */
-.about-container {
-  display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:50px;
-  max-width:1100px; margin:60px auto; padding:0 6%;
-  background:#f7f9fc; border-radius:15px;
+/* ABOUT */
+.about-container{
+display:flex;flex-wrap:wrap;gap:50px;
+max-width:1100px;margin:80px auto;padding:0 6%;
+align-items:center;
 }
-.about-image img {
-  width:100%; max-width:400px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); object-fit:cover; transition:0.3s;
+.about-image img{
+width:100%;max-width:400px;border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+transition:0.3s;
 }
-.about-image img:hover {transform:scale(1.05);}
-.about-text {max-width:600px;}
-.about-text h2 {color:#0077ff; margin-bottom:20px; font-size:2rem;}
-.about-text p {color:#555; line-height:1.7; margin-bottom:15px;}
-.about-text button {padding:14px 30px; border:none; border-radius:25px; background:#00d4ff; color:#000; cursor:pointer; font-weight:600; transition:0.3s;}
-.about-text button:hover {background:#0077ff; color:#fff;}
-@media(max-width:768px){
-  .about-container {flex-direction:column-reverse; text-align:center;}
-  .about-text button {margin-top:20px;}
-}
+.about-image img:hover{transform:scale(1.05);}
+.about-text{max-width:600px;}
+.about-text h2{color:#0077ff;margin-bottom:20px;}
+.about-text p{color:#555;margin-bottom:15px;line-height:1.7;}
 
-/* EXPERIENCE CARDS */
-.experience {padding:80px 6%;}
-.experience h2{text-align:center;color:#0077ff;margin-bottom:50px; font-size:2.2rem;}
-.experience-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px;}
-.exp-card {background:#fff; padding:25px; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.08); text-align:center; transition:0.4s;}
-.exp-card:hover {transform:translateY(-10px); box-shadow:0 12px 30px rgba(0,0,0,0.15);}
-.exp-card h3 {color:#0077ff; margin-bottom:12px;}
-.exp-card p {color:#555; font-size:1rem; line-height:1.6;}
+/* STATS */
+.stats{
+display:flex;justify-content:center;gap:60px;
+padding:60px 6%;text-align:center;
+}
+.stat h2{color:#0077ff;font-size:2.5rem;}
+.stat p{color:#555;}
+
+/* EXPERIENCE */
+.experience{padding:80px 6%;}
+.experience h2{text-align:center;color:#0077ff;margin-bottom:50px;}
+.experience-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+.exp-card{
+background:#fff;padding:25px;border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.3s;text-align:center;
+}
+.exp-card:hover{transform:translateY(-10px);}
+.exp-card h3{color:#0077ff;margin-bottom:10px;}
+
+/* CTA */
+.final-cta{
+text-align:center;padding:80px 6%;
+background:linear-gradient(135deg,#0077ff,#00d4ff);
+color:#fff;
+}
+.final-cta button{
+margin-top:20px;padding:14px 30px;
+border:none;border-radius:30px;
+background:#fff;color:#0077ff;
+font-weight:600;cursor:pointer;
+}
 
 /* FOOTER */
-footer{text-align:center; padding:25px; color:#777; margin-top:50px; font-size:0.95rem; background:#fff; border-top:1px solid #eaeaea;}
+footer{text-align:center;padding:20px;color:#777;}
 
-/* ANIMATIONS */
-.fade-in{opacity:0; transform:translateY(20px); animation:fadeInUp 1s forwards;}
-@keyframes fadeInUp{to{opacity:1; transform:translateY(0);}}
 </style>
 </head>
+
 <body>
 
-<header id="header">
-  <div class="logo-area">
-    <img src="./asset/image/Wise Tech logo.jpeg" alt="logo">
-    <div class="logo-text"><span>Wise</span> <span>Tech</span></div>
-  </div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav id="navMenu">
-    <a href="index.html">Home</a>
-    <a href="about.html" class="active">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact" class="contact-btn">Contact</a>
-  </nav>
+<header>
+<div class="logo-area">
+<img src="./asset/image/Wise Tech logo.jpeg">
+<div class="logo-text"><span>Wise</span> Tech</div>
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="navMenu">
+<a href="index.html">Home</a>
+<a href="about.html" class="active">About</a>
+<a href="index.html#projects">Projects</a>
+<a href="index.html#contact" class="contact-btn">Contact</a>
+</nav>
 </header>
 
-<section class="hero-about fade-in">
-  <h1>About Me</h1>
+<!-- HERO -->
+<section class="hero-about">
+<h1>About Wise Tech</h1>
 </section>
 
-<section class="about fade-in" id="about">
-  <div class="about-container">
-    <div class="about-image">
-      <img src="./asset/image/Wise Tech Developer.png" alt="Wise Tech Developer">
-    </div>
-    <div class="about-text">
-      <h2>About Me</h2>
-      <p>Hello! I’m a professional web developer and cloud infrastructure enthusiast. I specialize in creating modern, responsive websites using <strong>HTML, CSS, JavaScript</strong> and deploying secure infrastructures with <strong>Terraform</strong> on <strong>AWS</strong>. I’m passionate about solving real-world problems and building scalable, efficient solutions that help brands grow online.</p>
-      <p>With experience in both front-end development and cloud automation, I bridge the gap between design and infrastructure, ensuring projects are both beautiful and reliable.</p>
-      <button onclick="document.getElementById('contact').scrollIntoView()">Work With Me</button>
-    </div>
-  </div>
+<!-- ABOUT -->
+<section class="about-container">
+<div class="about-image">
+<img src="./asset/image/Wise Tech Developer.png">
+</div>
+
+<div class="about-text">
+<h2>I Build Solutions That Grow Businesses</h2>
+
+<p>
+I’m a web developer and cloud engineer focused on building modern, high-performance websites and scalable infrastructure.
+</p>
+
+<p>
+Using HTML, CSS, JavaScript, and AWS with Terraform, I create solutions that are fast, secure, and designed for growth.
+</p>
+
+<p>
+My goal is simple — help businesses stand out online and turn visitors into customers.
+</p>
+
+</div>
 </section>
 
-<section class="experience fade-in">
-  <h2>Experience & Achievements</h2>
-  <div class="experience-grid">
-    <div class="exp-card">
-      <h3>Front-End Development</h3>
-      <p>Built interactive websites with HTML, CSS, JS for clients and personal projects.</p>
-    </div>
-    <div class="exp-card">
-      <h3>Cloud Infrastructure</h3>
-      <p>Deployed secure AWS environments using Terraform and managed server resources.</p>
-    </div>
-    <div class="exp-card">
-      <h3>UI/UX Design</h3>
-      <p>Designed intuitive and user-friendly interfaces that focus on engagement and conversion.</p>
-    </div>
-    <div class="exp-card">
-      <h3>Project Collaboration</h3>
-      <p>Worked with teams to deliver projects on time while maintaining high-quality code and design standards.</p>
-    </div>
-  </div>
+<!-- STATS -->
+<section class="stats">
+<div class="stat"><h2>10+</h2><p>Projects</p></div>
+<div class="stat"><h2>5+</h2><p>Clients</p></div>
+<div class="stat"><h2>100%</h2><p>Performance Focus</p></div>
 </section>
 
-<footer>© 2026 Wise Tech. All rights reserved.</footer>
+<!-- EXPERIENCE -->
+<section class="experience">
+<h2>What I Do</h2>
+
+<div class="experience-grid">
+<div class="exp-card">
+<h3>Web Development</h3>
+<p>Building fast and responsive websites for businesses.</p>
+</div>
+
+<div class="exp-card">
+<h3>Cloud Infrastructure</h3>
+<p>Deploying secure and scalable AWS systems.</p>
+</div>
+
+<div class="exp-card">
+<h3>UI/UX Design</h3>
+<p>Designing clean and engaging user experiences.</p>
+</div>
+
+<div class="exp-card">
+<h3>Problem Solving</h3>
+<p>Creating solutions that deliver real business value.</p>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="final-cta">
+<h2>Let’s Build Something Powerful</h2>
+<p>Your project deserves a strong digital presence.</p>
+<button onclick="window.location.href='index.html#contact'">Start Project</button>
+</section>
+
+<footer>© 2026 Wise Tech</footer>
 
 <script>
-function toggleMenu(){document.getElementById('navMenu').classList.toggle('active');}
-
-// Header shadow on scroll
-window.addEventListener('scroll', function(){
-  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
-});
+function toggleMenu(){
+document.getElementById('navMenu').classList.toggle('active');
+}
 </script>
+
 </body>
 </html>

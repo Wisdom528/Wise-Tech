@@ -4,221 +4,287 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wise Tech | Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
+
 /* RESET */
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth;}
-body {background:#fff; color:#111;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#fdfdfd;color:#111;scroll-behavior:smooth}
 
 /* HEADER */
-header {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:15px 8%; background:#fff; border-bottom:1px solid #eaeaea;
-  position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.03);
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 8%;background:#fff;position:sticky;top:0;z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
-.logo-area {display:flex; align-items:center; gap:12px;}
-.logo-area img {width:40px; height:40px; border-radius:8px;}
-.logo-text {font-size:1.5rem; font-weight:700; letter-spacing:0.5px;}
-.logo-text span:first-child{color:#0077ff;} 
-.logo-text span:last-child{color:#111;}
 
-.menu-toggle {font-size:1.8rem; cursor:pointer; display:none;}
-nav {display:flex; gap:25px;}
-nav a {text-decoration:none; color:#555; font-size:0.95rem; font-weight:500; position:relative; padding:5px 0;}
-nav a.active::after {content:""; position:absolute; bottom:-5px; left:0; width:100%; height:2px; background:#0077ff;}
-nav a.contact-btn {
-  padding: 8px 18px;
-  background: #00d4ff;
-  color: #000 !important;
-  border-radius: 25px;
-  font-weight: 600;
-  transition:0.3s;
-}
-nav a.contact-btn:hover {
-  background:#0077ff;
-  color:#fff !important;
-}
+.logo-area{display:flex;align-items:center;gap:10px;}
+.logo-area img{width:45px;border-radius:10px;}
+.logo-text{font-weight:700;font-size:1.5rem;}
+.logo-text span:first-child{color:#0077ff;}
+
+nav{display:flex;gap:20px;}
+nav a{color:#555;text-decoration:none;font-weight:500;}
+nav a:hover{color:#0077ff;}
+.contact-btn{background:#00d4ff;padding:8px 18px;border-radius:25px;color:#000;}
+
+.menu-toggle{display:none;font-size:1.8rem;cursor:pointer;}
 
 @media(max-width:768px){
-  .menu-toggle{display:block;}
-  nav{position:absolute; top:60px; right:0; background:#fff; width:200px; flex-direction:column; align-items:center; display:none; border:1px solid #eee; padding:10px;}
-  nav.active{display:flex;}
-  nav a{padding:12px 0; width:100%; text-align:center; border-top:1px solid #eee;}
-  nav a.contact-btn {width:80%; margin:8px 0;}
+.menu-toggle{display:block;}
+nav{display:none;flex-direction:column;position:absolute;top:60px;right:0;background:#fff;width:200px;padding:10px;}
+nav.active{display:flex;}
 }
 
 /* HERO */
-.hero{position:relative; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; overflow:hidden;}
-.hero video{position:absolute; width:100%; height:100%; object-fit:cover; top:0; left:0; z-index:-2;}
-.hero-overlay{position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.5); top:0; left:0; z-index:-1;}
-.hero-content{padding:20px;}
-.hero h2{font-size:2.5rem; margin-bottom:10px;}
-.hero p{max-width:500px; margin:auto; margin-bottom:20px; color:#ddd;}
-.hero button{padding:12px 25px; border:none; background:#00d4ff; color:#000; border-radius:25px; cursor:pointer; transition:0.3s;}
-.hero button:hover{background:#0077ff; color:#fff;}
+.hero{
+height:100vh;display:flex;align-items:center;justify-content:center;
+text-align:center;color:#fff;position:relative;
+}
+.hero video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:-2;}
+.hero-overlay{position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:-1;}
 
-/* ABOUT */
-.about{padding:70px 6%; display:flex; flex-direction:column; align-items:center; text-align:center; background:#f7f9fc;}
-.about h2{color:#0077ff; margin-bottom:20px;}
-.about p{max-width:600px; color:#555; line-height:1.6;}
+.hero h1{font-size:3rem;margin-bottom:15px;}
+.hero p{max-width:600px;margin:auto;color:#ddd;}
+
+.hero-buttons{margin-top:20px;display:flex;gap:15px;justify-content:center;flex-wrap:wrap;}
+.hero button{
+padding:12px 28px;border-radius:30px;border:none;
+background:linear-gradient(135deg,#00d4ff,#0077ff);
+color:#fff;font-weight:600;cursor:pointer;
+}
+.secondary-btn{background:transparent;border:2px solid #00d4ff;}
+
+/* SECTION */
+.section{padding:100px 6%;}
+.section h2{text-align:center;margin-bottom:50px;color:#0077ff;}
+
+/* ABOUT PREVIEW */
+.about-preview{
+max-width:900px;margin:auto;text-align:center;
+}
+.about-preview p{color:#555;font-size:1.1rem;line-height:1.8;}
+.about-preview button{
+margin-top:20px;padding:12px 25px;border:none;border-radius:25px;
+background:linear-gradient(135deg,#00d4ff,#0077ff);
+color:#fff;font-weight:600;cursor:pointer;
+}
+
+/* STATS */
+.stats{display:flex;justify-content:center;gap:60px;padding:60px 6%;text-align:center;}
+.stat h2{color:#0077ff;font-size:2.5rem;}
+.stat p{color:#555;}
+
+/* SERVICES */
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+.service-card{
+padding:30px;border-radius:20px;background:#fff;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+.service-card:hover{transform:translateY(-10px);}
 
 /* PROJECTS */
-.section{padding:70px 6%;}
-.section h2{text-align:center;margin-bottom:40px;color:#0077ff;}
-.projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px;}
-.card{border:1px solid #eee; padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.05); transition:0.3s; text-align:center; overflow:hidden;}
-.card:hover{transform:translateY(-8px); box-shadow:0 8px 20px rgba(0,0,0,0.1);}
-.card img{width:100%; height:160px; object-fit:cover; border-radius:10px; margin-bottom:10px;}
-.card h3{margin-bottom:5px;}
-.card p{font-size:0.9rem; color:#555;}
-.card .tech-stack{margin-top:5px; font-size:0.85rem; color:#0077ff;}
-.card a{display:inline-block;margin-top:10px; color:#0077ff; text-decoration:none; font-weight:600; margin-right:5px; transition:0.2s;}
-.card a:hover{color:#00d4ff;}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+.card{
+background:#fff;border-radius:20px;padding:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.4s;text-align:center;
+}
+.card:hover{transform:translateY(-12px) scale(1.02);}
+.card img{width:100%;height:160px;object-fit:cover;border-radius:10px;}
+.card a{display:inline-block;margin-top:10px;color:#0077ff;font-weight:600;}
 
 /* SKILLS */
-.skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px;}
-.skill-card{text-align:center; padding:20px; border:1px solid #eee; border-radius:15px; transition:0.3s;}
-.skill-card:hover{transform:translateY(-5px);}
-.skill-card img{width:50px; margin-bottom:10px;}
-.skill-card h4{color:#0077ff;}
-.skill-card p{font-size:0.85rem; color:#555;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.skill-card{
+background:#fff;padding:20px;text-align:center;border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
 
 /* CONTACT */
-.contact-section{background:#f1f5ff; color:#111; padding:80px 6%; text-align:center;}
-.contact-box{max-width:600px; margin:auto;}
-.contact-box h2{margin-bottom:10px; color:#0077ff;}
-.contact-box p{color:#555; margin-bottom:25px;}
-.contact-form{display:flex; flex-direction:column; gap:15px;}
-.contact-form input, .contact-form textarea{padding:12px; border-radius:8px; border:none; outline:none;}
-.contact-form button{padding:14px; background:#00d4ff; border:none; border-radius:25px; cursor:pointer; font-weight:600; transition:0.3s;}
-.contact-form button:hover{background:#0077ff; color:#fff;}
-.contact-extra{margin-top:20px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;}
-.contact-extra a{display:flex; align-items:center; gap:8px; text-decoration:none; color:#00d4ff; font-weight:600;}
-.contact-extra img{width:22px; height:22px;}
+.contact-section{
+background:linear-gradient(135deg,#0a0a0a,#111);
+color:#fff;text-align:center;padding:80px 6%;
+}
+.contact-form{max-width:500px;margin:auto;display:flex;flex-direction:column;gap:15px;}
+.contact-form input,.contact-form textarea{
+padding:12px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;
+}
+.contact-form button{
+padding:14px;border:none;border-radius:25px;
+background:linear-gradient(135deg,#00d4ff,#0077ff);
+color:#fff;cursor:pointer;
+}
+
+/* CTA */
+.final-cta{
+text-align:center;padding:80px 6%;
+background:linear-gradient(135deg,#0077ff,#00d4ff);color:#fff;
+}
+.final-cta button{
+margin-top:20px;padding:14px 30px;border:none;border-radius:30px;
+background:#fff;color:#0077ff;font-weight:600;cursor:pointer;
+}
 
 /* FOOTER */
-footer{text-align:center; padding:20px; color:#777;}
+footer{text-align:center;padding:20px;color:#777;}
 
-/* ANIMATIONS */
-.fade-in{opacity:0; transform:translateY(20px); animation:fadeInUp 1s forwards;}
-@keyframes fadeInUp{to{opacity:1; transform:translateY(0);}}
+/* ANIMATION */
+.fade-in{opacity:0;transform:translateY(40px);transition:0.8s;}
+.fade-in.show{opacity:1;transform:translateY(0);}
+
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="logo-area">
-    <img src="./asset/image/Wise Tech logo.jpeg" alt="logo">
-    <div class="logo-text"><span>Wise</span> <span>Tech</span></div>
-  </div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav id="navMenu">
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact" class="contact-btn">Contact</a>
-  </nav>
+<div class="logo-area">
+<img src="./asset/image/Wise Tech logo.jpeg">
+<div class="logo-text"><span>Wise</span> Tech</div>
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="navMenu">
+<a href="#">Home</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="about.html">About</a>
+<a href="#contact" class="contact-btn">Contact</a>
+</nav>
 </header>
 
-<section class="hero fade-in">
-  <video autoplay muted loop>
-    <source src="./asset/video/Wise Tech.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h2>Creative Web Developer</h2>
-    <p>I design and build modern, high-converting websites that help brands grow.</p>
-    <button onclick="document.getElementById('projects').scrollIntoView()">View My Work</button>
-  </div>
+<!-- HERO -->
+<section class="hero">
+<video autoplay muted loop>
+<source src="./asset/video/Wise Tech.mp4">
+</video>
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+<h1>I Build Fast, Scalable Websites & Cloud Systems</h1>
+<p>Helping businesses grow with modern web solutions.</p>
+
+<div class="hero-buttons">
+<button onclick="scrollToSection('projects')">View Projects</button>
+<button class="secondary-btn" onclick="scrollToSection('contact')">Hire Me</button>
+</div>
+</div>
 </section>
 
-<section class="section" id="projects">
+<!-- ABOUT PREVIEW -->
+<section class="section fade-in">
+<h2>About Me</h2>
+<div class="about-preview">
+<p>
+I’m a web developer and cloud engineer focused on building high-performance websites and scalable systems that help businesses grow.
+</p>
+<button onclick="window.location.href='about.html'">Learn More →</button>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats fade-in">
+<div class="stat"><h2>10+</h2><p>Projects</p></div>
+<div class="stat"><h2>5+</h2><p>Clients</p></div>
+<div class="stat"><h2>100%</h2><p>Performance</p></div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section fade-in" id="projects">
 <h2>Projects</h2>
 <div class="projects">
-  <div class="card fade-in">
-    <img src="./asset/image/Miracle Academy.jpeg">
-    <h3>Miracle Academy</h3>
-    <p>Miracle Academy website.</p>
-    <div class="tech-stack">HTML, CSS, JS</div>
-    <a href="https://miracle-academy-fx.vercel.app" target="_blank">Live →</a>
-  </div>
-
-  <div class="card fade-in">
-    <img src="./asset/image/terraform.png">
-    <h3>Terraform AWS Infrastructure</h3>
-    <p>Deployed secure AWS infrastructure with EC2, Bastion Host, and Nginx.</p>
-    <div class="tech-stack">Terraform, AWS, Nginx</div>
-    <a href="https://wisdom528.github.io/terraform-assessment-/" target="_blank">Live Demo →</a>
-    <a href="https://github.com/Wisdom528/terraform-assessment-" target="_blank">Code →</a>
-  </div>
-
-  <div class="card fade-in">
-    <img src="./asset/image/Mummy Ola Real Estate.png">
-    <h3>Mummy Ola Real Estate</h3>
-    <p>Modern real estate website.</p>
-    <div class="tech-stack">HTML, CSS, JS</div>
-    <a href="https://mummy-ola-real-estate-7iia.vercel.app" target="_blank">Live →</a>
-  </div>
+<div class="card">
+<img src="./asset/image/Miracle Academy.jpeg">
+<h3>School Website</h3>
+<a href="https://miracle-academy-fx.vercel.app" target="_blank">Live →</a>
+</div>
 </div>
 </section>
 
-<section class="section" id="skills">
+<!-- SKILLS -->
+<section class="section fade-in" id="skills">
 <h2>Skills</h2>
 <div class="skills-grid">
-  <div class="skill-card fade-in"><img src="https://cdn-icons-png.flaticon.com/512/732/732212.png"><h4>HTML</h4><p>Structure</p></div>
-  <div class="skill-card fade-in"><img src="https://cdn-icons-png.flaticon.com/512/732/732190.png"><h4>CSS</h4><p>Design</p></div>
-  <div class="skill-card fade-in"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"><h4>JavaScript</h4><p>Logic</p></div>
-  <div class="skill-card fade-in"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png"><h4>Terraform</h4><p>Infrastructure as Code</p></div>
+<div class="skill-card"><h4>HTML</h4></div>
+<div class="skill-card"><h4>CSS</h4></div>
+<div class="skill-card"><h4>JavaScript</h4></div>
+<div class="skill-card"><h4>Terraform</h4></div>
 </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact-section fade-in" id="contact">
-<div class="contact-box">
 <h2>Let’s Work Together</h2>
-<p>Have a project idea? Send me a message and I’ll get back to you quickly.</p>
 <form class="contact-form" onsubmit="sendMail(event)">
 <input type="text" id="name" placeholder="Your Name" required>
 <input type="email" id="email" placeholder="Your Email" required>
-<textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+<textarea id="message" placeholder="Your Message"></textarea>
 <button type="submit">Send Message</button>
-<div class="contact-extra">
-  <a href="https://www.tiktok.com/@thewisetech_" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok"> TikTok
-  </a>
-  <a href="https://instagram.com/wise_tech" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram"> Instagram
-  </a>
-  <a href="mailto:Wisetech415@gmail.com">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email"> Email
-  </a>
-</div>
-</div>
+</form>
 </section>
 
-<footer>© 2026 Wise Tech. All rights reserved.</footer>
+<!-- CTA -->
+<section class="final-cta">
+<h2>Ready to Build Something Great?</h2>
+<button onclick="scrollToSection('contact')">Start Project</button>
+</section>
 
+<footer>© 2026 Wise Tech</footer>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-function toggleMenu(){document.getElementById('navMenu').classList.toggle('active');}
+(function(){
+emailjs.init("6qrDgMazSc1LYixlZ");
+})();
+
 function sendMail(e){
 e.preventDefault();
-let name=document.getElementById('name').value;
-let email=document.getElementById('email').value;
-let message=document.getElementById('message').value;
-let link=`mailto:Wisetech415@gmail.com?subject=New Message from ${name}&body=Email: ${email}%0D%0A${message}`;
-window.location.href=link;
+
+const btn = document.querySelector(".contact-form button");
+btn.innerHTML = "Sending...";
+btn.disabled = true;
+
+let params = {
+from_name: document.getElementById("name").value,
+from_email: document.getElementById("email").value,
+message: document.getElementById("message").value
+};
+
+emailjs.send("service_zowrk89","template_u5vxa5c", params)
+.then(()=>{
+alert("Thanks! I’ll reply within 24 hours 🚀");
+document.querySelector(".contact-form").reset();
+btn.innerHTML = "Send Message";
+btn.disabled = false;
+})
+.catch(()=>{
+alert("Something went wrong ❌");
+btn.innerHTML = "Send Message";
+btn.disabled = false;
+});
 }
 
-// Smooth nav highlight
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 70;
-    if(pageYOffset >= sectionTop){ current = section.getAttribute('id'); }
-  });
-  navLinks.forEach(a => { a.classList.remove('active'); if(a.getAttribute('href').includes(current)){a.classList.add('active');} });
+function toggleMenu(){
+document.getElementById('navMenu').classList.toggle('active');
+}
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add('show');}
 });
+});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 </script>
+
 </body>
 </html>
