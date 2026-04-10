@@ -9,97 +9,234 @@
 
 <style>
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#fdfdfd;color:#111;}
+/* ===================== BASE ===================== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-/* HEADER */
+body{
+background:radial-gradient(circle at top,#0a0f1f,#05060a);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* glow bg */
+body::before{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#00d4ff33,#0077ff11,transparent 70%);
+top:-100px;
+left:-100px;
+filter:blur(80px);
+z-index:-1;
+animation:floatGlow 10s infinite alternate;
+}
+
+@keyframes floatGlow{
+from{transform:translate(0,0);}
+to{transform:translate(200px,150px);}
+}
+
+/* ===================== HEADER ===================== */
 header{
-display:flex;justify-content:space-between;align-items:center;
-padding:15px 8%;background:#fff;position:sticky;top:0;z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
-.logo-area{display:flex;align-items:center;gap:10px;}
-.logo-area img{width:45px;border-radius:10px;}
-.logo-text{font-weight:700;font-size:1.5rem;}
-.logo-text span:first-child{color:#0077ff;}
-
-nav{display:flex;gap:20px;}
-nav a{color:#555;text-decoration:none;font-weight:500;}
-nav a.active{color:#0077ff;}
-.contact-btn{background:#00d4ff;padding:8px 18px;border-radius:25px;color:#000;}
-
-.menu-toggle{display:none;font-size:1.8rem;cursor:pointer;}
-@media(max-width:768px){
-.menu-toggle{display:block;}
-nav{display:none;flex-direction:column;position:absolute;top:60px;right:0;background:#fff;width:200px;padding:10px;}
-nav.active{display:flex;}
-}
-
-/* HERO */
-.hero-about{
-height:50vh;display:flex;align-items:center;justify-content:center;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('./asset/image/about-bg.jpg') center/cover;
-color:#fff;text-align:center;
-}
-.hero-about h1{font-size:3rem;}
-
-/* ABOUT */
-.about-container{
-display:flex;flex-wrap:wrap;gap:50px;
-max-width:1100px;margin:80px auto;padding:0 6%;
+display:flex;
+justify-content:space-between;
 align-items:center;
+padding:15px 8%;
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(10,12,25,0.6);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
-.about-image img{
-width:100%;max-width:400px;border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+.logo-area{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-area img{
+width:45px;
+border-radius:10px;
+box-shadow:0 0 15px #00d4ff55;
+}
+
+.logo-text{
+font-weight:700;
+font-size:1.5rem;
+}
+
+.logo-text span{
+color:#00d4ff;
+}
+
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:#ccc;
+text-decoration:none;
+font-weight:500;
 transition:0.3s;
 }
-.about-image img:hover{transform:scale(1.05);}
-.about-text{max-width:600px;}
-.about-text h2{color:#0077ff;margin-bottom:20px;}
-.about-text p{color:#555;margin-bottom:15px;line-height:1.7;}
 
-/* STATS */
-.stats{
-display:flex;justify-content:center;gap:60px;
-padding:60px 6%;text-align:center;
+nav a:hover,
+nav a.active{
+color:#00d4ff;
 }
-.stat h2{color:#0077ff;font-size:2.5rem;}
-.stat p{color:#555;}
 
-/* EXPERIENCE */
-.experience{padding:80px 6%;}
-.experience h2{text-align:center;color:#0077ff;margin-bottom:50px;}
+.contact-btn{
+background:linear-gradient(135deg,#00d4ff,#0077ff);
+padding:8px 18px;
+border-radius:25px;
+color:#000;
+font-weight:600;
+}
+
+/* ===================== HERO ===================== */
+.hero-about{
+height:50vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),
+url('./asset/image/about-bg.jpg') center/cover;
+}
+
+.hero-about h1{
+font-size:3rem;
+text-shadow:0 0 20px #00d4ff55;
+}
+
+/* ===================== ABOUT ===================== */
+.about-container{
+display:flex;
+flex-wrap:wrap;
+gap:50px;
+max-width:1100px;
+margin:80px auto;
+padding:0 6%;
+align-items:center;
+}
+
+.about-image img{
+width:100%;
+max-width:400px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+transition:0.4s;
+}
+
+.about-image img:hover{
+transform:scale(1.05) rotateY(5deg);
+}
+
+.about-text{
+max-width:600px;
+}
+
+.about-text h2{
+color:#00d4ff;
+margin-bottom:20px;
+}
+
+.about-text p{
+color:#ccc;
+margin-bottom:15px;
+line-height:1.7;
+}
+
+/* ===================== STATS ===================== */
+.stats{
+display:flex;
+justify-content:center;
+gap:60px;
+padding:60px 6%;
+text-align:center;
+}
+
+.stat h2{
+color:#00d4ff;
+font-size:2.5rem;
+}
+
+/* ===================== EXPERIENCE ===================== */
+.experience{
+padding:80px 6%;
+}
+
+.experience h2{
+text-align:center;
+color:#00d4ff;
+margin-bottom:50px;
+}
+
 .experience-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
-.exp-card{
-background:#fff;padding:25px;border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-transition:0.3s;text-align:center;
-}
-.exp-card:hover{transform:translateY(-10px);}
-.exp-card h3{color:#0077ff;margin-bottom:10px;}
 
-/* CTA */
+.exp-card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+transition:0.4s;
+text-align:center;
+}
+
+.exp-card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 20px #00d4ff22;
+}
+
+.exp-card h3{
+color:#00d4ff;
+margin-bottom:10px;
+}
+
+/* ===================== CTA ===================== */
 .final-cta{
-text-align:center;padding:80px 6%;
+text-align:center;
+padding:80px 6%;
 background:linear-gradient(135deg,#0077ff,#00d4ff);
 color:#fff;
 }
+
 .final-cta button{
-margin-top:20px;padding:14px 30px;
-border:none;border-radius:30px;
-background:#fff;color:#0077ff;
-font-weight:600;cursor:pointer;
+margin-top:20px;
+padding:14px 30px;
+border:none;
+border-radius:30px;
+background:#fff;
+color:#0077ff;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
 }
 
-/* FOOTER */
-footer{text-align:center;padding:20px;color:#777;}
+.final-cta button:hover{
+transform:scale(1.05);
+}
+
+/* ===================== FOOTER ===================== */
+footer{
+text-align:center;
+padding:20px;
+color:#777;
+}
 
 </style>
 </head>
@@ -111,8 +248,6 @@ footer{text-align:center;padding:20px;color:#777;}
 <img src="./asset/image/Wise Tech logo.jpeg">
 <div class="logo-text"><span>Wise</span> Tech</div>
 </div>
-
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <nav id="navMenu">
 <a href="index.html">Home</a>
@@ -136,17 +271,11 @@ footer{text-align:center;padding:20px;color:#777;}
 <div class="about-text">
 <h2>I Build Solutions That Grow Businesses</h2>
 
-<p>
-I’m a web developer and cloud engineer focused on building modern, high-performance websites and scalable infrastructure.
-</p>
+<p>I’m a web developer and cloud engineer focused on building modern, high-performance websites and scalable infrastructure.</p>
 
-<p>
-Using HTML, CSS, JavaScript, and AWS with Terraform, I create solutions that are fast, secure, and designed for growth.
-</p>
+<p>Using HTML, CSS, JavaScript, and AWS with Terraform, I create solutions that are fast, secure, and designed for growth.</p>
 
-<p>
-My goal is simple — help businesses stand out online and turn visitors into customers.
-</p>
+<p>My goal is simple — help businesses stand out online and turn visitors into customers.</p>
 
 </div>
 </section>
@@ -163,6 +292,7 @@ My goal is simple — help businesses stand out online and turn visitors into cu
 <h2>What I Do</h2>
 
 <div class="experience-grid">
+
 <div class="exp-card">
 <h3>Web Development</h3>
 <p>Building fast and responsive websites for businesses.</p>
@@ -182,6 +312,7 @@ My goal is simple — help businesses stand out online and turn visitors into cu
 <h3>Problem Solving</h3>
 <p>Creating solutions that deliver real business value.</p>
 </div>
+
 </div>
 </section>
 
@@ -189,16 +320,14 @@ My goal is simple — help businesses stand out online and turn visitors into cu
 <section class="final-cta">
 <h2>Let’s Build Something Powerful</h2>
 <p>Your project deserves a strong digital presence.</p>
-<button onclick="window.location.href='index.html#contact'">Start Project</button>
+
+<button onclick="window.location.href='index.html#contact'">
+Start Project
+</button>
+
 </section>
 
-<footer>© 2026 Wise Tech</footer>
-
-<script>
-function toggleMenu(){
-document.getElementById('navMenu').classList.toggle('active');
-}
-</script>
+<footer>© 2026 Wise Tech. All rights reserved.</footer>
 
 </body>
 </html>
