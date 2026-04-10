@@ -9,7 +9,7 @@
 
 <style>
 
-/* ===================== BASE ===================== */
+/* ================= BASE ================= */
 *{
 margin:0;
 padding:0;
@@ -23,7 +23,7 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* glow bg */
+/* glow */
 body::before{
 content:"";
 position:fixed;
@@ -42,7 +42,7 @@ from{transform:translate(0,0);}
 to{transform:translate(200px,150px);}
 }
 
-/* ===================== HEADER ===================== */
+/* ================= HEADER ================= */
 header{
 display:flex;
 justify-content:space-between;
@@ -86,7 +86,6 @@ nav a{
 color:#ccc;
 text-decoration:none;
 font-weight:500;
-transition:0.3s;
 }
 
 nav a:hover,
@@ -99,10 +98,33 @@ background:linear-gradient(135deg,#00d4ff,#0077ff);
 padding:8px 18px;
 border-radius:25px;
 color:#000;
-font-weight:600;
 }
 
-/* ===================== HERO ===================== */
+/* MOBILE MENU */
+.menu-toggle{
+display:none;
+font-size:1.8rem;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+.menu-toggle{display:block;}
+
+nav{
+display:none;
+flex-direction:column;
+position:absolute;
+top:70px;
+right:5%;
+background:#0a0f1f;
+padding:15px;
+border-radius:12px;
+}
+
+nav.active{display:flex;}
+}
+
+/* ================= HERO ================= */
 .hero-about{
 height:50vh;
 display:flex;
@@ -118,7 +140,7 @@ font-size:3rem;
 text-shadow:0 0 20px #00d4ff55;
 }
 
-/* ===================== ABOUT ===================== */
+/* ================= ABOUT ================= */
 .about-container{
 display:flex;
 flex-wrap:wrap;
@@ -156,13 +178,14 @@ margin-bottom:15px;
 line-height:1.7;
 }
 
-/* ===================== STATS ===================== */
+/* ================= STATS ================= */
 .stats{
 display:flex;
 justify-content:center;
 gap:60px;
 padding:60px 6%;
 text-align:center;
+flex-wrap:wrap;
 }
 
 .stat h2{
@@ -170,7 +193,7 @@ color:#00d4ff;
 font-size:2.5rem;
 }
 
-/* ===================== EXPERIENCE ===================== */
+/* ================= EXPERIENCE ================= */
 .experience{
 padding:80px 6%;
 }
@@ -207,12 +230,11 @@ color:#00d4ff;
 margin-bottom:10px;
 }
 
-/* ===================== CTA ===================== */
+/* ================= CTA ================= */
 .final-cta{
 text-align:center;
 padding:80px 6%;
 background:linear-gradient(135deg,#0077ff,#00d4ff);
-color:#fff;
 }
 
 .final-cta button{
@@ -231,11 +253,23 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* ===================== FOOTER ===================== */
+/* ================= FOOTER ================= */
 footer{
 text-align:center;
 padding:20px;
 color:#777;
+}
+
+/* ANIMATION */
+.fade-in{
+opacity:0;
+transform:translateY(40px);
+transition:0.8s;
+}
+
+.fade-in.show{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
@@ -249,6 +283,8 @@ color:#777;
 <div class="logo-text"><span>Wise</span> Tech</div>
 </div>
 
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
 <nav id="navMenu">
 <a href="index.html">Home</a>
 <a href="about.html" class="active">About</a>
@@ -258,12 +294,12 @@ color:#777;
 </header>
 
 <!-- HERO -->
-<section class="hero-about">
+<section class="hero-about fade-in">
 <h1>About Wise Tech</h1>
 </section>
 
 <!-- ABOUT -->
-<section class="about-container">
+<section class="about-container fade-in">
 <div class="about-image">
 <img src="./asset/image/Wise Tech Developer.png">
 </div>
@@ -276,19 +312,18 @@ color:#777;
 <p>Using HTML, CSS, JavaScript, and AWS with Terraform, I create solutions that are fast, secure, and designed for growth.</p>
 
 <p>My goal is simple — help businesses stand out online and turn visitors into customers.</p>
-
 </div>
 </section>
 
 <!-- STATS -->
-<section class="stats">
+<section class="stats fade-in">
 <div class="stat"><h2>10+</h2><p>Projects</p></div>
 <div class="stat"><h2>5+</h2><p>Clients</p></div>
 <div class="stat"><h2>100%</h2><p>Performance Focus</p></div>
 </section>
 
 <!-- EXPERIENCE -->
-<section class="experience">
+<section class="experience fade-in">
 <h2>What I Do</h2>
 
 <div class="experience-grid">
@@ -317,7 +352,7 @@ color:#777;
 </section>
 
 <!-- CTA -->
-<section class="final-cta">
+<section class="final-cta fade-in">
 <h2>Let’s Build Something Powerful</h2>
 <p>Your project deserves a strong digital presence.</p>
 
@@ -328,6 +363,19 @@ Start Project
 </section>
 
 <footer>© 2026 Wise Tech. All rights reserved.</footer>
+
+<script>
+function toggleMenu(){
+document.getElementById('navMenu').classList.toggle('active');
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add('show');
+});
+});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
