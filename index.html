@@ -38,6 +38,7 @@ position:sticky;top:0;
 background:rgba(10,12,25,0.6);
 backdrop-filter:blur(12px);
 border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:1000;
 }
 
 .logo-area{display:flex;align-items:center;gap:10px;}
@@ -59,7 +60,6 @@ padding:8px 18px;border-radius:25px;color:#000;
 display:none;
 font-size:1.8rem;
 cursor:pointer;
-color:#fff;
 }
 
 /* HERO */
@@ -71,6 +71,13 @@ justify-content:center;
 text-align:center;
 position:relative;
 padding:0 6%;
+}
+
+/* FIX: allow clicks through overlay */
+.hero video,
+.hero-overlay,
+.hero-fallback{
+pointer-events:none;
 }
 
 .hero video{
@@ -100,12 +107,14 @@ rgba(0,0,0,0.6);
 z-index:-1;
 }
 
-.hero-content{z-index:2;}
+.hero-content{
+position:relative;
+z-index:2;
+}
 
 .hero h1{
 font-size:3rem;
 margin-bottom:15px;
-text-shadow:0 0 20px #00d4ff55;
 }
 
 .hero p{max-width:600px;margin:auto;color:#ccc;}
@@ -131,7 +140,6 @@ cursor:pointer;
 .secondary-btn{
 background:transparent;
 border:2px solid #00d4ff;
-color:#fff;
 }
 
 /* SECTION */
@@ -143,12 +151,6 @@ color:#fff;
 max-width:900px;margin:auto;text-align:center;
 background:rgba(255,255,255,0.05);
 padding:30px;border-radius:20px;
-}
-.about-preview p{color:#ccc;}
-.about-preview button{
-margin-top:20px;padding:12px 25px;border:none;border-radius:25px;
-background:linear-gradient(135deg,#00d4ff,#0077ff);
-color:#fff;
 }
 
 /* PROJECTS */
@@ -163,12 +165,6 @@ background:rgba(255,255,255,0.05);
 border-radius:20px;
 padding:20px;
 border:1px solid rgba(255,255,255,0.08);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-border-color:#00d4ff;
 }
 
 .card img{
@@ -176,12 +172,6 @@ width:100%;
 height:160px;
 object-fit:cover;
 border-radius:10px;
-}
-
-.card a{
-color:#00d4ff;
-display:inline-block;
-margin-top:10px;
 }
 
 /* SKILLS */
@@ -287,21 +277,10 @@ width:220px;
 padding:15px;
 border-radius:15px;
 display:none;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
 nav.active{display:flex;}
 
-nav a{
-padding:10px;
-border-radius:8px;
-}
-
-nav a:hover{
-background:rgba(255,255,255,0.05);
-}
-
-header{padding:15px 5%;}
 }
 
 </style>
@@ -370,11 +349,19 @@ header{padding:15px 5%;}
 <div class="card">
 <img src="./asset/image/terraform.png">
 <h3>Terraform AWS Infrastructure</h3>
+<a href="https://github.com/Wisdom528/terraform-assessment-" target="_blank">code →</a>
+
+<br>
+
+<a href="https://wisdom528.github.io/terraform-assessment-/" target="_blank">Live →</a>
+
+</a>
 </div>
 
 <div class="card">
 <img src="./asset/image/Mummy Ola Real Estate.png">
 <h3>Real Estate Website</h3>
+<a href="https://mummy-ola-real-estate-7iia.vercel.app/" target="_blank">Live →</a>
 </div>
 
 </div>
