@@ -8,7 +8,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
@@ -25,21 +24,17 @@ overflow-x:hidden;
 
 /* HEADER */
 header{
-display:flex;justify-content:space-between;align-items:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
 padding:15px 8%;
-position:sticky;top:0;
+position:sticky;
+top:0;
 background:rgba(10,12,25,0.6);
 backdrop-filter:blur(12px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 z-index:1000;
 }
-
-.logo-text{font-weight:700;font-size:1.5rem;}
-.logo-text span{color:#00d4ff;}
-
-nav{display:flex;gap:20px;}
-nav a{color:#ccc;text-decoration:none;}
-nav a:hover{color:#00d4ff;}
 
 .logo-area{
 display:flex;
@@ -57,11 +52,60 @@ object-fit:cover;
 .logo-text{
 font-weight:700;
 font-size:1.4rem;
-letter-spacing:1px;
 }
 
-.logo-text span{
-color:#00d4ff;
+.logo-text span{color:#00d4ff;}
+
+/* NAV */
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:#ccc;
+text-decoration:none;
+}
+
+nav a:hover{color:#00d4ff;}
+
+/* MENU BUTTON */
+.menu-btn{
+display:none;
+font-size:26px;
+cursor:pointer;
+}
+
+/* MOBILE NAV */
+@media(max-width:768px){
+
+nav{
+position:absolute;
+top:70px;
+right:0;
+background:#111;
+flex-direction:column;
+width:220px;
+padding:20px;
+border-radius:10px 0 0 10px;
+
+/* smooth animation */
+opacity:0;
+transform:translateY(-10px);
+pointer-events:none;
+transition:0.3s ease;
+}
+
+nav.active{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
+}
+
+.menu-btn{
+display:block;
+}
+
 }
 
 /* HERO */
@@ -155,7 +199,7 @@ color:#fff;
 cursor:pointer;
 }
 
-/* SKILLS (RESTORED) */
+/* SKILLS */
 .skills-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -175,7 +219,7 @@ height:50px;
 margin-bottom:10px;
 }
 
-/* CONTACT (RESTORED) */
+/* CONTACT */
 .contact-section{
 background:#0a0a0a;
 text-align:center;
@@ -242,27 +286,24 @@ color:#777;
 
 <body>
 
-
-
 <header>
+
 <div class="logo-area">
-<img src="./asset/image/Wise Tech logo.jpeg" alt="Wise Tech Logo" style="width:50px;height:50px;border-radius:50%;margin-right:10px;">
-
-      <div class="logo-text">
-        <span>Wise</span> Tech
-      </div>
-</div>
+<img src="./asset/image/Wise Tech logo.jpeg" alt="Wise Tech Logo">
+<div class="logo-text"><span>Wise</span> Tech</div>
 </div>
 
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<nav>
+<nav id="navMenu">
 <a href="#">Home</a>
 <a href="#projects">Projects</a>
 <a href="#skills">Skills</a>
-<a href="blog.html#posts">Blog</a>
+<a href="blog.html">Blog</a>
 <a href="#contact">Contact</a>
 <a href="about.html">About</a>
 </nav>
+
 </header>
 
 <!-- HERO -->
@@ -282,31 +323,29 @@ View Projects
 
 <div class="projects">
 
-  <div class="card">
-    <img src="./asset/image/Miracle Academy.jpeg">
-    <h3>School Website</h3>
-    <a href="https://miracle-academy-fx.vercel.app" target="_blank">Live →</a>
-  </div>
-
-  <div class="card">
-    <img src="./asset/image/terraform.png">
-    <h3>Terraform AWS</h3>
-    <a href="https://github.com/Wisdom528/terraform-assessment-" target="_blank">Code →</a>
-    <br>
-    <a href="https://wisdom528.github.io/terraform-assessment-/" target="_blank">Live →</a>
-  </div>
-
-  <div class="card">
-    <img src="./asset/image/Mummy Ola Real Estate.png">
-    <h3>Real Estate Site</h3>
-    <a href="https://mummy-ola-real-estate-7iia.vercel.app/" target="_blank">Live →</a>
-  </div>
-
+<div class="card">
+<img src="./asset/image/Miracle Academy.jpeg">
+<h3>School Website</h3>
+<a href="https://miracle-academy-fx.vercel.app" target="_blank">Live →</a>
 </div>
+
+<div class="card">
+<img src="./asset/image/terraform.png">
+<h3>Terraform AWS</h3>
+<a href="https://github.com/Wisdom528/terraform-assessment-" target="_blank">Code →</a><br>
+<a href="https://wisdom528.github.io/terraform-assessment-" target="_blank">Live →</a>
+</div>
+
+<div class="card">
+<img src="./asset/image/Mummy Ola Real Estate.png">
+<h3>Real Estate Site</h3>
+<a href="https://mummy-ola-real-estate-7iia.vercel.app/" target="_blank">Live →</a>
+</div>
+
 </div>
 </section>
 
-<!-- SKILLS (RESTORED) -->
+<!-- SKILLS -->
 <section class="section" id="skills">
 <h2>Skills</h2>
 
@@ -338,11 +377,10 @@ View Projects
 <!-- BLOG -->
 <section class="section" id="blog">
 <h2>Latest Blog Posts</h2>
-
-<div class="blog-grid" id="blogContainer"></div>
+<div class="blog-grid" id="blogContainer">Loading posts...</div>
 </section>
 
-<!-- CONTACT (RESTORED FULL) -->
+<!-- CONTACT -->
 <section class="contact-section" id="contact">
 <h2>Let’s Work Together</h2>
 
@@ -362,30 +400,37 @@ View Projects
 <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"> Instagram
 </a>
 </div>
+
 </section>
 
 <footer>© 2026 Wise Tech. All rights reserved.</footer>
 
-<!-- EMAILJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
 <script>
-emailjs.init("6qrDgMazSc1LYixlZ");
+
+/* MENU */
+function toggleMenu(){
+const nav = document.getElementById("navMenu");
+nav.classList.toggle("active");
+}
+
+/* AUTO CLOSE */
+document.querySelectorAll("#navMenu a").forEach(link=>{
+link.addEventListener("click", ()=>{
+document.getElementById("navMenu").classList.remove("active");
+});
+});
 
 /* FIREBASE */
 const firebaseConfig = {
-  apiKey: "AIzaSyAL_1JkxU96Nfyd3gqj7_56XKO0_R0UrPM",
-  authDomain: "wisetech-blog-2.firebaseapp.com",
-  projectId: "wisetech-blog-2",
-  storageBucket: "wisetech-blog-2.firebasestorage.app",
-  messagingSenderId: "564533507468",
-  appId: "1:564533507468:web:9b6c938d2e866bf2ffd2a9"
+apiKey: "AIzaSyAL_1JkxU96Nfyd3gqj7_56XKO0_R0UrPM",
+authDomain: "wisetech-blog-2.firebaseapp.com",
+projectId: "wisetech-blog-2"
 };
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* BLOG LOAD */
+/* BLOG */
 const blogContainer = document.getElementById("blogContainer");
 
 db.collection("posts")
@@ -399,10 +444,10 @@ let p = doc.data();
 
 blogContainer.innerHTML += `
 <div class="blog-card">
-<img src="${p.image}">
+<img src="${p.image || 'https://via.placeholder.com/400'}">
 <div class="blog-content">
 <h3>${p.title}</h3>
-<p>${p.content.substring(0,80)}...</p>
+<p>${(p.content || "").substring(0,80)}...</p>
 <a href="post.html?id=${doc.id}">
 <button>Read More →</button>
 </a>

@@ -37,6 +37,7 @@ header {
   display:flex;
   justify-content:space-between;
   align-items:center;
+  position:relative;
 }
 
 .logo-area {
@@ -58,6 +59,11 @@ header {
   font-weight:700;
 }
 
+/* NAV */
+nav {
+  display:flex;
+}
+
 nav a {
   color:white;
   margin-left:20px;
@@ -68,6 +74,40 @@ nav a {
 
 nav a:hover {
   color:#60a5fa;
+}
+
+/* MENU BUTTON */
+.menu-btn {
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  nav{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#111827;
+    flex-direction:column;
+    width:220px;
+    padding:20px;
+    display:none;
+    border-radius:10px 0 0 10px;
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+  nav a{
+    margin:10px 0;
+  }
 }
 
 /* HERO */
@@ -176,11 +216,15 @@ footer {
     <img src="./asset/image/Wise Tech logo.jpeg" alt="Wise Tech Logo">
     <div class="logo-text"> 
        <span>Wise</span> Tech
-      </div>
+    </div>
   </div>
 
-  <nav>
+  <!-- MENU BUTTON -->
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <nav id="navMenu">
     <a href="index.html">🏠 Portfolio</a>
+    <a href="#" onclick="openAdmin()">Admin Panel</a>
     <a onclick="showSection('posts')">Posts</a>
     <a onclick="showSection('about')">About</a>
   </nav>
@@ -208,18 +252,6 @@ footer {
       I am <b>Wisdom</b>, a web developer and cloud engineer passionate about building modern, fast, and scalable digital systems.
     </p>
 
-    <p>
-      I specialize in frontend development, backend systems, and cloud infrastructure using HTML, CSS, JavaScript, Firebase, and Terraform.
-    </p>
-
-    <p>
-      Through Wise Tech, I share my projects and document my journey in tech.
-    </p>
-
-    <p>
-      This blog is where I post updates, tutorials, and insights from my development work.
-    </p>
-
   </div>
 </section>
 
@@ -229,6 +261,11 @@ footer {
 
 <script>
 
+/* NAV TOGGLE */
+function toggleMenu(){
+  document.getElementById("navMenu").classList.toggle("active");
+}
+
 function showSection(id){
   document.querySelectorAll(".section").forEach(sec=>{
     sec.classList.remove("active");
@@ -237,6 +274,20 @@ function showSection(id){
   document.getElementById(id).classList.add("active");
 }
 
+/* ADMIN LOGIN */
+function openAdmin(){
+  const password = prompt("Enter Admin Password:");
+
+  const correctPassword = "wisetech123";
+
+  if(password === correctPassword){
+    window.location.href = "admin.html";
+  }else if(password !== null){
+    alert("Wrong password ❌");
+  }
+}
+
+/* FIREBASE */
 const firebaseConfig = {
   apiKey: "AIzaSyAL_1JkxU96Nfyd3gqj7_56XKO0_R0UrPM",
   authDomain: "wisetech-blog-2.firebaseapp.com",
@@ -261,45 +312,23 @@ function displayPosts(posts){
         <img src="${post.image}" alt="${post.title}" />
         <div class="card-content">
           <h3>${post.title}</h3>
-          <small style="color:gray;">Tech • ${new Date().toDateString()}</small>
           <p>${post.content.substring(0,150)}...</p>
-
-          <a href="${post.readMore}" target="_blank">
-            <button style="
-              margin-top:10px;
-              padding:10px;
-              width:100%;
-              border:none;
-              border-radius:8px;
-              background:#2563eb;
-              color:white;
-              cursor:pointer;
-              font-weight:bold;
-            ">
-              Read More →
-            </button>
-          </a>
-
         </div>
       </div>
     `;
   });
 }
 
-/* LOAD POSTS */
 db.collection("posts")
 .orderBy("createdAt","desc")
 .onSnapshot(snapshot=>{
   allPosts = [];
-
   snapshot.forEach(doc=>{
     allPosts.push(doc.data());
   });
-
   displayPosts(allPosts);
 });
 
-/* SEARCH FUNCTION */
 function filterPosts(){
   const value = document.getElementById("searchInput").value.toLowerCase();
 
