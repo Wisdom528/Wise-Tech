@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- SEO -->
+<title>Wise Tech Blog | Learn Coding & Make Money Online</title>
+<meta name="description" content="Wise Tech Blog - Learn web development, make money online, and grow your tech skills.">
+<meta name="keywords" content="web development, coding, Nigeria tech, make money online, programming">
+<meta name="author" content="Wisdom">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Wise Tech Blog">
+<meta property="og:description" content="Learn • Build • Grow 🚀">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://picsum.photos/1200/600">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<style>
+body {
+  margin:0;
+  font-family:"Open Sans", sans-serif;
+  background:#f4f6f9;
+}
+
+/* HEADER */
+header {
+  background:#111827;
+  color:white;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+}
+
+.logo-area {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo-area img {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.logo-text {
+  font-family:"Montserrat";
+  font-size:20px;
+  font-weight:700;
+}
+
+/* NAV */
+nav {
+  display:flex;
+}
+
+nav a {
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+}
+
+nav a:hover {
+  color:#60a5fa;
+}
+
+/* MENU BUTTON */
+.menu-btn {
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu-btn{
+    display:block;
+  }
+
+  nav{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#111827;
+    flex-direction:column;
+    width:220px;
+    padding:20px;
+    display:none;
+    border-radius:10px 0 0 10px;
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+  nav a{
+    margin:10px 0;
+  }
+}
+
+/* HERO */
+.hero {
+  padding:60px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:white;
+}
+
+.hero h1 {
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+/* POSTS */
+.container {
+  max-width:1100px;
+  margin:40px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  transition:0.2s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+}
+
+.card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.card-content {
+  padding:15px;
+}
+
+.card-content h3 {
+  margin-bottom:5px;
+}
+
+.card-content p {
+  color:#444;
+  font-size:14px;
+}
+
+.section {
+  display:none;
+}
+
+.section.active {
+  display:block;
+}
+
+/* ABOUT */
+.about-box {
+  max-width:800px;
+  margin:40px auto;
+  padding:30px;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  line-height:1.8;
+}
+
+/* SEARCH */
+.search-box {
+  max-width:500px;
+  margin:20px auto;
+  display:flex;
+}
+
+.search-box input {
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  outline:none;
+}
+
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:20px;
+  background:#111827;
+  color:white;
+  margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-area">
+    <img src="./asset/image/Wise Tech logo.jpeg" alt="Wise Tech Logo">
+    <div class="logo-text"> 
+       <span>Wise</span> Tech
+    </div>
+  </div>
+
+  <!-- MENU BUTTON -->
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <nav id="navMenu">
+    <a href="index.html">🏠 Portfolio</a>
+    <a href="admin.html">Admin Panel</a>
+    <a onclick="showSection('posts')">Posts</a>
+    <a onclick="showSection('about')">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Learn Coding & Make Money Online</h1>
+  <p>Step-by-step guides, tutorials, and real tech insights 🚀</p>
+</section>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search posts..." onkeyup="filterPosts()">
+</div>
+
+<section id="posts" class="section active">
+  <div class="container" id="postsContainer"></div>
+</section>
+
+<section id="about" class="section">
+  <div class="about-box">
+
+    <h2>About Me</h2>
+
+    <p>
+      I am <b>Wisdom</b>, a web developer and cloud engineer passionate about building modern, fast, and scalable digital systems.
+    </p>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Wise Tech Blog</p>
+</footer>
+
+<script>
+
+/* NAV TOGGLE */
+function toggleMenu(){
+  document.getElementById("navMenu").classList.toggle("active");
+}
+
+function showSection(id){
+  document.querySelectorAll(".section").forEach(sec=>{
+    sec.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+}
+
+/* FIREBASE */
+const firebaseConfig = {
+  apiKey: "AIzaSyAL_1JkxU96Nfyd3gqj7_56XKO0_R0UrPM",
+  authDomain: "wisetech-blog-2.firebaseapp.com",
+  projectId: "wisetech-blog-2",
+  storageBucket: "wisetech-blog-2.firebasestorage.app",
+  messagingSenderId: "564533507468",
+  appId: "1:564533507468:web:9b6c938d2e866bf2ffd2a9"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+const container = document.getElementById("postsContainer");
+let allPosts = [];
+
+function displayPosts(posts){
+  container.innerHTML = "";
+
+  posts.forEach(post=>{
+    container.innerHTML += `
+      <div class="card">
+        <img src="${post.image}" alt="${post.title}" />
+        <div class="card-content">
+          <h3>${post.title}</h3>
+          <p>${post.content.substring(0,150)}...</p>
+        </div>
+      </div>
+    `;
+  });
+}
+
+db.collection("posts")
+.orderBy("createdAt","desc")
+.onSnapshot(snapshot=>{
+  allPosts = [];
+  snapshot.forEach(doc=>{
+    allPosts.push(doc.data());
+  });
+  displayPosts(allPosts);
+});
+
+function filterPosts(){
+  const value = document.getElementById("searchInput").value.toLowerCase();
+
+  const filtered = allPosts.filter(post=>
+    post.title.toLowerCase().includes(value) ||
+    post.content.toLowerCase().includes(value)
+  );
+
+  displayPosts(filtered);
+}
+
+</script>
+
+</body>
+</html>

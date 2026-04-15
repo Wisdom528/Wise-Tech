@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wise Tech | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+background:radial-gradient(circle at top,#0a0f1f,#05060a);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+position:sticky;
+top:0;
+background:rgba(10,12,25,0.6);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:1000;
+}
+
+.logo-area{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-area img{
+width:45px;
+height:45px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.logo-text{
+font-weight:700;
+font-size:1.4rem;
+}
+
+.logo-text span{color:#00d4ff;}
+
+/* NAV */
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+color:#ccc;
+text-decoration:none;
+}
+
+nav a:hover{color:#00d4ff;}
+
+/* MENU BUTTON */
+.menu-btn{
+display:none;
+font-size:26px;
+cursor:pointer;
+}
+
+/* MOBILE NAV */
+@media(max-width:768px){
+
+nav{
+position:absolute;
+top:70px;
+right:0;
+background:#111;
+flex-direction:column;
+width:220px;
+padding:20px;
+border-radius:10px 0 0 10px;
+
+/* smooth animation */
+opacity:0;
+transform:translateY(-10px);
+pointer-events:none;
+transition:0.3s ease;
+}
+
+nav.active{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
+}
+
+.menu-btn{
+display:block;
+}
+
+}
+
+/* HERO */
+.hero{
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 6%;
+}
+
+.hero h1{font-size:3rem;margin-bottom:15px;}
+.hero p{color:#ccc;max-width:600px;margin:auto;}
+
+.hero button{
+margin-top:20px;
+padding:12px 28px;
+border-radius:30px;
+border:none;
+background:linear-gradient(135deg,#00d4ff,#0077ff);
+color:#fff;
+font-weight:600;
+cursor:pointer;
+}
+
+/* SECTION */
+.section{
+padding:80px 8%;
+}
+
+.section h2{
+text-align:center;
+margin-bottom:40px;
+color:#00d4ff;
+}
+
+/* PROJECTS */
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+padding:15px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* BLOG */
+.blog-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.blog-card{
+background:#111;
+border-radius:15px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.blog-card img{
+width:100%;
+height:160px;
+object-fit:cover;
+}
+
+.blog-content{
+padding:15px;
+}
+
+.blog-content button{
+margin-top:10px;
+width:100%;
+padding:10px;
+border:none;
+border-radius:8px;
+background:#2563eb;
+color:#fff;
+cursor:pointer;
+}
+
+/* SKILLS */
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.skill-card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+text-align:center;
+border-radius:15px;
+}
+
+.skill-card img{
+width:50px;
+height:50px;
+margin-bottom:10px;
+}
+
+/* CONTACT */
+.contact-section{
+background:#0a0a0a;
+text-align:center;
+padding:80px 6%;
+}
+
+.contact-form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+padding:12px;
+background:#111;
+color:#fff;
+border:none;
+border-radius:8px;
+}
+
+.contact-form button{
+padding:14px;
+border:none;
+border-radius:25px;
+background:linear-gradient(135deg,#00d4ff,#0077ff);
+color:#fff;
+cursor:pointer;
+}
+
+.socials{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.socials img{width:22px;}
+
+.card a{
+display:inline-block;
+margin-top:10px;
+color:#00d4ff;
+text-decoration:none;
+font-weight:600;
+}
+
+.card a:hover{
+text-decoration:underline;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo-area">
+<img src="./asset/image/Wise Tech logo.jpeg" alt="Wise Tech Logo">
+<div class="logo-text"><span>Wise</span> Tech</div>
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<nav id="navMenu">
+<a href="#">Home</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="blog.html">Blog</a>
+<a href="#contact">Contact</a>
+<a href="about.html">About</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+<h1>I Build Fast, Scalable Websites</h1>
+<p>Developer • Cloud Engineer • System Builder</p>
+<button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+View Projects
+</button>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+<h2>Projects</h2>
+
+<div class="projects">
+
+<div class="card">
+<img src="./asset/image/Miracle Academy.jpeg">
+<h3>School Website</h3>
+<a href="https://miracle-academy-fx.vercel.app" target="_blank">Live →</a>
+</div>
+
+<div class="card">
+<img src="./asset/image/terraform.png">
+<h3>Terraform AWS</h3>
+<a href="https://github.com/Wisdom528/terraform-assessment-" target="_blank">Code →</a><br>
+<a href="https://wisdom528.github.io/terraform-assessment-" target="_blank">Live →</a>
+</div>
+
+<div class="card">
+<img src="./asset/image/Mummy Ola Real Estate.png">
+<h3>Real Estate Site</h3>
+<a href="https://mummy-ola-real-estate-7iia.vercel.app/" target="_blank">Live →</a>
+</div>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+<h2>Skills</h2>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+<h4>HTML</h4>
+</div>
+
+<div class="skill-card">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+<h4>CSS</h4>
+</div>
+
+<div class="skill-card">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+<h4>JavaScript</h4>
+</div>
+
+<div class="skill-card">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg">
+<h4>Terraform</h4>
+</div>
+
+</div>
+</section>
+
+<!-- BLOG -->
+<section class="section" id="blog">
+<h2>Latest Blog Posts</h2>
+<div class="blog-grid" id="blogContainer">Loading posts...</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+<h2>Let’s Work Together</h2>
+
+<form class="contact-form" onsubmit="sendMail(event)">
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="email" id="email" placeholder="Your Email" required>
+<textarea id="message" placeholder="Your Message" required></textarea>
+<button type="submit" id="sendBtn">Send Message 🚀</button>
+</form>
+
+<div class="socials">
+<a href="https://www.tiktok.com/@thewisetech_" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png"> TikTok
+</a>
+
+<a href="https://www.instagram.com/thewisetech_" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"> Instagram
+</a>
+</div>
+
+</section>
+
+<footer>© 2026 Wise Tech. All rights reserved.</footer>
+
+<script>
+
+/* MENU */
+function toggleMenu(){
+const nav = document.getElementById("navMenu");
+nav.classList.toggle("active");
+}
+
+/* AUTO CLOSE */
+document.querySelectorAll("#navMenu a").forEach(link=>{
+link.addEventListener("click", ()=>{
+document.getElementById("navMenu").classList.remove("active");
+});
+});
+
+/* FIREBASE */
+const firebaseConfig = {
+apiKey: "AIzaSyAL_1JkxU96Nfyd3gqj7_56XKO0_R0UrPM",
+authDomain: "wisetech-blog-2.firebaseapp.com",
+projectId: "wisetech-blog-2"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+/* BLOG */
+const blogContainer = document.getElementById("blogContainer");
+
+db.collection("posts")
+.orderBy("createdAt","desc")
+.limit(3)
+.onSnapshot(snapshot=>{
+blogContainer.innerHTML="";
+
+snapshot.forEach(doc=>{
+let p = doc.data();
+
+blogContainer.innerHTML += `
+<div class="blog-card">
+<img src="${p.image || 'https://via.placeholder.com/400'}">
+<div class="blog-content">
+<h3>${p.title}</h3>
+<p>${(p.content || "").substring(0,80)}...</p>
+<a href="post.html?id=${doc.id}">
+<button>Read More →</button>
+</a>
+</div>
+</div>
+`;
+});
+});
+
+/* EMAIL */
+function sendMail(e){
+e.preventDefault();
+
+let btn=document.getElementById("sendBtn");
+btn.innerHTML="Sending...";
+btn.disabled=true;
+
+let params={
+from_name:document.getElementById("name").value,
+from_email:document.getElementById("email").value,
+message:document.getElementById("message").value
+};
+
+emailjs.send("service_zowrk89","template_u5vxa5c",params)
+.then(()=>{
+btn.innerHTML="Sent ✅";
+document.querySelector(".contact-form").reset();
+})
+.catch(()=>{
+btn.innerHTML="Failed ❌";
+});
+
+setTimeout(()=>{
+btn.innerHTML="Send Message 🚀";
+btn.disabled=false;
+},3000);
+}
+</script>
+
+</body>
+</html>
