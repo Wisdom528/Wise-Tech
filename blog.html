@@ -224,7 +224,7 @@ footer {
 
   <nav id="navMenu">
     <a href="index.html">🏠 Portfolio</a>
-    <a href="#" onclick="openAdmin()">Admin Panel</a>
+    <a href="admin.html">Admin Panel</a>
     <a onclick="showSection('posts')">Posts</a>
     <a onclick="showSection('about')">About</a>
   </nav>
@@ -272,19 +272,6 @@ function showSection(id){
   });
 
   document.getElementById(id).classList.add("active");
-}
-
-/* ADMIN LOGIN */
-function openAdmin(){
-  const password = prompt("Enter Admin Password:");
-
-  const correctPassword = "wisetech123";
-
-  if(password === correctPassword){
-    window.location.href = "admin.html";
-  }else if(password !== null){
-    alert("Wrong password ❌");
-  }
 }
 
 /* FIREBASE */
