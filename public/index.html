@@ -299,7 +299,7 @@ color:#777;
 <a href="#">Home</a>
 <a href="#projects">Projects</a>
 <a href="#skills">Skills</a>
-<a href="blog.html">Blog</a>
+
 <a href="#contact">Contact</a>
 <a href="about.html">About</a>
 </nav>
@@ -374,11 +374,7 @@ View Projects
 </div>
 </section>
 
-<!-- BLOG -->
-<section class="section" id="blog">
-<h2>Latest Blog Posts</h2>
-<div class="blog-grid" id="blogContainer">Loading posts...</div>
-</section>
+
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
@@ -430,32 +426,7 @@ projectId: "wisetech-blog-2"
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* BLOG */
-const blogContainer = document.getElementById("blogContainer");
 
-db.collection("posts")
-.orderBy("createdAt","desc")
-.limit(3)
-.onSnapshot(snapshot=>{
-blogContainer.innerHTML="";
-
-snapshot.forEach(doc=>{
-let p = doc.data();
-
-blogContainer.innerHTML += `
-<div class="blog-card">
-<img src="${p.image || 'https://via.placeholder.com/400'}">
-<div class="blog-content">
-<h3>${p.title}</h3>
-<p>${(p.content || "").substring(0,80)}...</p>
-<a href="post.html?id=${doc.id}">
-<button>Read More →</button>
-</a>
-</div>
-</div>
-`;
-});
-});
 
 /* EMAIL */
 function sendMail(e){
