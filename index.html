@@ -219,6 +219,57 @@ height:50px;
 margin-bottom:10px;
 }
 
+.socials{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.social-link{
+display:flex;
+align-items:center;
+gap:8px;
+text-decoration:none;
+color:#fff;
+font-weight:500;
+padding:10px 15px;
+border-radius:10px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
+}
+
+.social-link:hover{
+transform:translateY(-3px);
+background:rgba(0,212,255,0.15);
+border-color:#00d4ff;
+}
+
+.social-link img{
+width:24px;
+height:24px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
 /* CONTACT */
 .contact-section{
 background:#0a0a0a;
@@ -273,6 +324,18 @@ font-weight:600;
 .card a:hover{
 text-decoration:underline;
 }
+.social-link svg {
+  width: 22px;
+  height: 22px;
+  fill: #0f3c7a; /* your brand color */
+  transition: 0.3s ease;
+}
+
+.social-link:hover svg {
+  fill: #ffcc00; /* hover color */
+}
+
+
 
 /* FOOTER */
 footer{
@@ -289,7 +352,7 @@ color:#777;
 <header>
 
 <div class="logo-area">
-<img src="./asset/image/Wise Tech logo.png" alt="Wise Tech Logo">
+<img src="./asset/image/Wise Tech logo.jpeg" alt="Wise Tech Logo">
 <div class="logo-text"><span>Wise</span> Tech</div>
 </div>
 
@@ -325,21 +388,34 @@ View Projects
 
 <div class="card">
 <img src="./asset/image/Miracle Academy.jpeg">
-<h3>School Website</h3>
+<h3>School Management Website</h3>
+<P>A responsive school website designed to showcase academic programs, announcements, and student resources. Built with a clean UI for easy navigation and mobile-friendly access.</P>
+<P>
+    
+</P>
 <a href="https://miracle-academy-fx.vercel.app" target="_blank">Live →</a>
 </div>
 
 <div class="card">
 <img src="./asset/image/terraform.png">
-<h3>Terraform AWS</h3>
+<h3>AWS Infrastructure Automation (Terraform)</h3>
+<p>Infrastructure-as-Code project using Terraform to automate AWS resource deployment.</p>
 <a href="https://github.com/Wisdom528/terraform-assessment-" target="_blank">Code →</a><br>
 <a href="https://wisdom528.github.io/terraform-assessment-" target="_blank">Live →</a>
 </div>
 
 <div class="card">
 <img src="./asset/image/Mummy Ola Real Estate.png">
-<h3>Real Estate Site</h3>
+<h3>Real Estate Landing Page</h3>
+<p>A modern real estate website showcasing property listings with a clean, luxury-style UI. Designed to attract buyers with smooth layout, hero section, and responsive design.</p>
 <a href="https://mummy-ola-real-estate-7iia.vercel.app/" target="_blank">Live →</a>
+</div>
+
+<div class="card">
+  <img src="./asset/image/K-18.png" alt="Restaurant / Café Landing Page">
+  <h3>Restaurant / Café Landing Page</h3>
+  <p>A stylish restaurant website designed for a café business, featuring menu highlights, ambiance showcase, and customer-focused layout to improve engagement and conversions.</p>
+  <a href="https://kansas-comfort-cafe.vercel.app/" target="_blank">Live →</a>
 </div>
 
 </div>
@@ -388,13 +464,17 @@ View Projects
 </form>
 
 <div class="socials">
-<a href="https://www.tiktok.com/@thewisetech_" target="_blank">
-<img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png"> TikTok
+
+<a href="https://www.tiktok.com/@thewisetech_" target="_blank" class="social-link">
+<img src="./asset/image/tiktok2.png" alt="TikTok">
+<span>TikTok</span>
 </a>
 
-<a href="https://www.instagram.com/thewisetech_" target="_blank">
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"> Instagram
+<a href="https://www.instagram.com/thewisetech_" target="_blank" class="social-link">
+<img src="./asset/image/instag.png" alt="Instagram">
+<span>Instagram</span>
 </a>
+
 </div>
 
 </section>
